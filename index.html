@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Market Tracker - Cali</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+
+    <header>
+        <div class="logo-container">
+            <h1>☕ Coffee<span>Tracker.</span></h1>
+            <p>Busca cualquier marca en tiempo real (Cali, CO)</p>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="brandSearch" placeholder="Escribe la marca (ej. Juan Valdez, Sello Rojo)...">
+                <button id="syncBtn">Sincronizar</button>
+            </div>
+
+            <div id="statusConsole" class="status-console">Listo para buscar...</div>
+
+            <div class="sources-container">
+                <span class="sources-label">Sitios consultados:</span>
+                <div id="sourcesList" class="sources-list">
+                    <!-- Retailers will be injected here -->
+                </div>
+            </div>
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="Classic">Clasico</button>
+            <button class="filter-btn" data-filter="Decaf">Descafeinado</button>
+        </div>
+        </div>
+    </header>
+
+    <main id="productGrid">
+        <!-- Cards will be injected by JavaScript -->
+    </main>
+
+    <footer>
+        <p>© 2026 Coffee Price Tracker. Datos obtenidos de APIs oficiales de retailers.</p>
+    </footer>
+
+    <!-- Use standard scripts for local file compatibility -->
+    <script src="app.js"></script>
+</body>
+
+</html>
