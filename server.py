@@ -1,11 +1,13 @@
 from starlette.applications import Starlette
-from starlette.responses import JSONResponse
-from starlette.routing import Route
+from starlette.responses import JSONResponse, FileResponse
+from starlette.routing import Route, Mount
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
+from starlette.staticfiles import StaticFiles
 import subprocess
 import uvicorn
 import json
+import os
 
 async def sync(request):
     query = request.query_params.get("q", "cafe buendia")
@@ -70,8 +72,14 @@ async def sync(request):
             "message": f"Excepción en el servidor: {str(e)}"
         }, status_code=500)
 
+async def root(request):
+    """Serve the main HTML page"""
+    return FileResponse('index.html')
+
 routes = [
-    Route("/sync", endpoint=sync, methods=["GET"])
+    Route("/", endpoint=root, methods=["GET"]),
+    Route("/sync", endpoint=sync, methods=["GET"]),
+    Mount("/static", StaticFiles(directory="."), name="static")
 ]
 
 middleware = [
